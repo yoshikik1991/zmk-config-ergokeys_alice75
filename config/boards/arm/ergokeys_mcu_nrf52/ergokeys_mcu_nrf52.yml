@@ -1,0 +1,14 @@
+identifier: ergokeys_mcu_nrf52
+name: ergokeys_mcu_nrf52
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - pwm
+  - watchdog
