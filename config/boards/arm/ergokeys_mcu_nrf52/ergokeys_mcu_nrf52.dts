@@ -12,6 +12,7 @@
 
 / {
 	model = "ergokeys_mcu_nrf52";
+    compatible = "ergokeys,mcu_nrf52";
 
 	chosen {
 		zephyr,code-partition = &code_partition;
