@@ -170,6 +170,7 @@
 
     encoder: encoder {
         compatible = "alps,ec11";
+        #sensor-binding-cells = <1>;
         
         a-gpios = <&mcu_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&mcu_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
