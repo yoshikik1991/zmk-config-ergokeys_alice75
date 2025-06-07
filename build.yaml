@@ -20,6 +20,8 @@
 ---
 include:
   - board: ergokeys_mcu_nrf52
-    shield: corne_left
+    shield: ergokeys_alice75
+    snippet: studio-rpc-usb-uart
+    #cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: ergokeys_mcu_nrf52
-    shield: corne_right
+    shield: settings_reset
