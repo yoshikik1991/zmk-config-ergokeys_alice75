@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: badjeff
       url-base: https://github.com/badjeff/
+    - name: te9no
+      url-base: https://github.com/te9no/
     - name: yoshikik1991
       url-base: https://github.com/yoshikik1991
     # Additional modules containing boards/shields/custom code can be listed here as well

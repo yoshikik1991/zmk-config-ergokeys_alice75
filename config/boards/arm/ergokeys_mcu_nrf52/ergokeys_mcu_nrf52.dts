@@ -36,11 +36,13 @@
     };
 
 	vbatt: vbatt {
-		compatible = "zmk,battery-voltage-divider";
-		label = "BATTERY";
-		io-channels = <&adc 2>;
-		output-ohms = <2000000>;
-		full-ohms = <(2000000 + 820000)>;
+        status = "okay";
+        compatible = "zmk,battery-voltage-divider";
+        label = "voltage divider";
+        io-channels = <&adc 2>;
+        output-ohms = <2000000>;
+        full-ohms =  <(2000000 + 800000)>;
+        //power-gpios = <&gpio1 9 (GPIO_ACTIVE_LOW)>;
 	};
 };
 
@@ -66,7 +68,7 @@ zephyr_udc0: &usbd {
 
 
 &flash0 {
-    /* 
+    /* Enable Softdevice 
 	 * For more information, see:
 	 * http://docs.zephyrproject.org/latest/devices/dts/flash_partitions.html
 	 */
@@ -75,25 +77,32 @@ zephyr_udc0: &usbd {
 		#address-cells = <1>;
 		#size-cells = <1>;
 
-        sd_partition: partition@0 {
-            reg = <0x0 DT_SIZE_K(4)>;
-        };
+		sd_partition: partition@0 {
+			label = "softdevice";
+			reg = <0x00000000 0x00026000>;
+		};
+		code_partition: partition@26000 {
+			label = "code_partition";
+			reg = <0x00026000 0x000c6000>;
+		};
 
-        code_partition: partition@1000 {
-            reg = <DT_SIZE_K(4) DT_SIZE_K(844)>;
-        };
+		/*
+		 * The flash starting at 0x000ec000 and ending at
+		 * 0x000f3fff is reserved for use by the application.
+		 */
 
-        /*
-         * The flash starting at 0x000d4000 and ending at
-         * 0x000f3fff is reserved for use by the application.
-         */
+		/*
+		 * Storage partition will be used by FCB/LittleFS/NVS
+		 * if enabled.
+		 */
+		storage_partition: partition@ec000 {
+			label = "storage";
+			reg = <0x000ec000 0x00008000>;
+		};
 
-        /*
-         * Storage partition will be used by FCB/LittleFS/NVS
-         * if enabled.
-         */
-        storage_partition: partition@d4000 {
-            reg = <DT_SIZE_K(848) DT_SIZE_K(128)>;
-        };
+		boot_partition: partition@f4000 {
+			label = "adafruit_boot";
+			reg = <0x000f4000 0x0000c000>;
+		};
 	};
 };
