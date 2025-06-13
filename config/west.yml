@@ -12,8 +12,8 @@ manifest:
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: yoshikik1991
+      revision: fix_bvd_adc0_conflict
       import: app/west.yml
     - name: zmk-analog-input-driver
       remote: badjeff

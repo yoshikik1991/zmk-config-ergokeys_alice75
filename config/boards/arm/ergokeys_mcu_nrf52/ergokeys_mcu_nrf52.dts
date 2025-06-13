@@ -42,7 +42,7 @@
         io-channels = <&adc 2>;
         output-ohms = <2000000>;
         full-ohms =  <(2000000 + 800000)>;
-        //power-gpios = <&gpio1 9 (GPIO_ACTIVE_LOW)>;
+		oversampling = <0>;
 	};
 };
 
